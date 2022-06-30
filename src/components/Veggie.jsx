@@ -27,7 +27,7 @@ function Veggie() {
   return (
     <div>
       <Wrapper>
-        <h3>Popular Picks</h3>
+        <h3>Our Vegeterian Picks</h3>
         <Splide options={{
           perPage: 3,
           arrows: false,
@@ -53,10 +53,10 @@ function Veggie() {
 }
 
 const Wrapper = styled.div`
-  margin: 4rem 0rem;
+  margin: 3rem 0rem;
   `;
 const Card = styled.div`
-    min-height: 25rem;
+    min-height: 20rem;
     border-radius: 2rem;
     overflow: hidden;
     position: relative;
