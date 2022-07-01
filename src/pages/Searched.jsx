@@ -5,23 +5,32 @@ import styled from 'styled-components';
 
 function Searched() {
 
-  const [searchedRecipes, setSearchedRecipes] = useState([]);
-  let params = useParams();
+    const [searchedRecipes, setSearchedRecipes] = useState([]);
+    let params = useParams();
 
-  const getSearched = async (name) => {
-    const api = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`);
-    const recipes = await api.json();
-    setSearchedRecipes(recipes.result);
-    console.log(recipes)
-  }
+    const getSearched = async (name) => {
+        const api = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`);
+        const recipes = await api.json();
+        setSearchedRecipes(recipes.results);
+        console.log(recipes)
+    }
 
-  useEffect(() => {
-    getSearched(params.searched);
-  }, [params.searched])
+    useEffect(() => {
+        getSearched(params.searched);
+    }, [params.searched])
 
-  return (
-    <div>Searched</div>
-  )
+    return (
+        <Grid>
+            {searchedRecipes.map((item) => {
+                return (
+                    <Card key={item.id}>
+                        <img src={item.image} alt={item.title} />
+                        <h4>{item.title}</h4>
+                    </Card>
+                )
+            })}
+        </Grid>
+    )
 }
 
 
