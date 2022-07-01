@@ -53,7 +53,7 @@ function Veggie() {
 }
 
 const Wrapper = styled.div`
-  margin: 3rem 0rem;
+  margin: 2rem 0rem;
   `;
 const Card = styled.div`
     min-height: 20rem;
