@@ -62,9 +62,11 @@ const Button = styled.button`
   border: 2px solid black;
   margin-right: 1.6rem;
   font-weight: 600;
+  max-height: 6vh;
 `;
 const Info = styled.div`
   margin-left: 10rem;
+  display: flex;
 `;
 
 export default Recipe
