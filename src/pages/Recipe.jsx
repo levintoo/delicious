@@ -8,11 +8,13 @@ function Recipe() {
 
   let params = useParams();
   const [details, setDetails] = useState({});
+  const [activeTab, setActiveTab] = useState("instructions");
 
   const fetchDetails = async () => {
     const api = await fetch(`https://api.spoonacular.com/recipes/${params.id}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
     const recipe = await api.json();
     setDetails(recipe);
+    console.log(details);
   }
 
   useEffect(() => {
@@ -26,8 +28,13 @@ function Recipe() {
         <img src={details.image} alt="" />
       </div>
       <Info>
-        <Button>Instructions</Button>
-        <Button>Ingredients</Button>
+        <div>
+        <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab("instructions")}>Instructions</Button>
+        <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab("ingredients")}>Ingredients</Button>
+        </div>
+        <div>
+          <h3 dangerouslySetInnerHTML={{ __html: details.summary}}></h3>
+        </div>
         </Info>
     </DetailWrapper>
   );
@@ -42,7 +49,7 @@ const DetailWrapper = styled.div`
     color: white;
   }
   img {
-    max-width: 70%;
+    width: 30rem;
   }
   h2 {
     margin-bottom: 2rem;
@@ -54,6 +61,7 @@ const DetailWrapper = styled.div`
   ul {
     margin-top: 2rem;
   }
+
 `;
 const Button = styled.button`
   padding: 1rem 2rem;
@@ -65,8 +73,14 @@ const Button = styled.button`
   max-height: 6vh;
 `;
 const Info = styled.div`
-  margin-left: 10rem;
+  margin-left: 5rem;
   display: flex;
+  flex-direction: column;
+  width: max-content;
+  div {
+    display: flex;
+    width: 100%;
+  }
 `;
 
 export default Recipe
