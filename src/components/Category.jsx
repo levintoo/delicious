@@ -1,4 +1,4 @@
-import { FaPizzaSlice, FaHamburger, FaHome } from "react-icons/fa";
+import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
 import { GiNoodles, GiChopsticks } from "react-icons/gi";
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
@@ -7,10 +7,6 @@ function Category() {
   return (
     <div>
         <List>
-        <SLink to={'/'}>
-            <FaHome />
-            <h4>Home</h4>
-        </SLink>
         <SLink to={'/cuisine/Italian'}>
             <FaPizzaSlice />
             <h4>Italian</h4>
@@ -37,7 +33,7 @@ const List = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0rem 2rem;
+    margin: 2rem 1.3rem;
 `;
 const SLink = styled(NavLink)`
     display: flex;
