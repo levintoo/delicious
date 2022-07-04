@@ -32,9 +32,18 @@ function Recipe() {
         <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab("instructions")}>Instructions</Button>
         <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab("ingredients")}>Ingredients</Button>
         </div>
+        {activeTab === 'instructions' && (
         <div>
           <h3 dangerouslySetInnerHTML={{ __html: details.summary}}></h3>
         </div>
+        )}
+        {activeTab === 'ingredients' && (
+        <ul>
+          {details.extendedIngredients.map((ingredient) => (
+            <li key={ingredient.id}>{ingredient.original}</li>
+          ))};
+        </ul>
+        )}
         </Info>
     </DetailWrapper>
   );
@@ -80,6 +89,11 @@ const Info = styled.div`
   div {
     display: flex;
     width: 100%;
+  }
+  div h3 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 400;
   }
 `;
 
