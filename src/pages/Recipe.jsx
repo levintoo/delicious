@@ -64,7 +64,7 @@ const DetailWrapper = styled.div`
     margin-bottom: 2rem;
   }
   li {
-    font-size: 2rem;
+    font-size: 1.3rem;
     line-height: 2.5rem;
   }
   ul {
@@ -91,7 +91,7 @@ const Info = styled.div`
     width: 100%;
   }
   div h3 {
-    font-size: 2rem;
+    font-size: 1.3rem;
     line-height: 2.5rem;
     font-weight: 400;
   }
